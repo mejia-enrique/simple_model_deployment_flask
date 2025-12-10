@@ -41,4 +41,5 @@ print(f'Test Root Mean Squared Error is {test_rmse}')
 
 # Saving the model
 filename = 'income_model.pkl'
-pickle.dump(model, open(filename, 'wb'))
+with open(filename, 'wb') as file:
+    pickle.dump(model, file)
