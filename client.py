@@ -1,19 +1,17 @@
 import requests, json
 
-# Data to send
-education = 1  # 0:No degree, 1:Bachelors, 2:Masters, 3:Doctorate
-yoe = 10 #Years of Experience as integer
-team_members = 3  # Number of people in their team (direct and indirect reports)
-
-# Parameters
-IP = '192.168.1.224'
-PORT = '8111'
+# Parameters, getting the environment variables
+IP = "192.168.1.224" # Second value is the default if not found 
+PORT = "8111"
 API_URL = f'http://{IP}:{PORT}/api_predict_income'
 
-# Data to send for prediction (a list of dictionaries)
+# Data to send
+# education = 0:No degree, 1:Bachelors, 2:Masters, 3:Doctorate
+#years_of_experience = Years of Experience as integer
+#etam_members = 3  # Number of people in their team (direct and indirect reports)
 data_to_send = [
-    {"education": education, "years_of_experience": yoe, "team_members": team_members},
-    {"education": 2, "years_of_experience": 3, "team_members": 1}
+    {"education": 1, "years_of_experience": 10, "team_members": 50},
+    {"education": 2, "years_of_experience": 30, "team_members": 1}
                 ]
 
 # Sending request and receiving prediction
