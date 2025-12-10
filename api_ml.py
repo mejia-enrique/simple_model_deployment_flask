@@ -4,9 +4,8 @@ import pandas as pd
 import numpy as np
 
 # Loading the model
-model = pickle.load(open('income_model.pkl', 'rb'))
 with open('income_model.pkl', 'rb') as file:
-    model.pickle.load(file)
+    model = pickle.load(file)
 print('Model loaded successfully...')
 
 # Creating flask api that receives POST request
@@ -22,13 +21,12 @@ def predict():
         input_data = pd.DataFrame(data)
         input_data = input_data[['education', 'years_of_experience', 'team_members']]
     except Exception as e:
+        print(f"ERROR: Fallo al crear DataFrame: {e}")
         return jsonify({'Error': f"Error in the JSON format: {e}"}), 400
 
     # Predicting and showing the output
     prediction = model.predict(input_data)
-    print(prediction)
     output = prediction.tolist()
-    print(output)
     return jsonify(
         {'Income prediction': output}
     )
