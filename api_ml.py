@@ -30,7 +30,3 @@ def predict():
     return jsonify(
         {'Income prediction': output}
     )
-
-if __name__ == '__main__':
-    # Host 0.0.0.0 to listed requests from any computer
-    app.run(host='0.0.0.0' , port=8111, debug=True)
